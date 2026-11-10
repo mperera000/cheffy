@@ -3,7 +3,7 @@
   "short_name": "Cheffy",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFF6EA",
-  "theme_color": "#E8552D",
+  "background_color": "#12141D",
+  "theme_color": "#12141D",
   "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

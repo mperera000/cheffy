@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cheffy Concept B: Le Moderne</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+@keyframes brow{0%,68%,100%{transform:translateY(0)}76%,88%{transform:translateY(-6px)}}
+@keyframes sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(2deg)}}
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes glance{0%,40%,100%{transform:translateX(0)}50%,85%{transform:translateX(4px)}}
+.blink{animation:blink 5.5s infinite;transform-box:fill-box;transform-origin:center}
+.later{animation-delay:1.8s}
+.brow{animation:brow 4.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.sway{animation:sway 6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.breathe{animation:breathe 4s ease-in-out infinite}
+.glance{animation:glance 6s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.blink,.brow,.sway,.breathe,.glance{animation:none}}
+</style>
+</helmet>
+<div style="width: 1280px; height: 940px; box-sizing: border-box; padding: 52px 56px; background: #141519; color: #F2ECE2; font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; gap: 28px;">
+  <header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: {{accent}}; font-weight: 600;">Cheffy · Concept B</div>
+      <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-style: italic; font-size: 60px; line-height: 1;">Le Moderne</h1>
+    </div>
+    <p style="margin: 0; max-width: 470px; font-size: 16px; line-height: 1.55; color: #B8B1A6;">Today’s chef-owner: open kitchen, charcoal jackets, leather aprons, tortoiseshell and a headscarf. Same wit, less starch.</p>
+  </header>
+  <div style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #B8B1A6;">Choose your sous chef</div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px;">
+
+    <article style="display: flex; flex-direction: column; gap: 22px;">
+      <div style="height: 440px; border-radius: 270px 270px 28px 28px; background: radial-gradient(circle at 50% 48%, rgba(217,164,65,0.34) 0%, rgba(217,164,65,0) 58%), #23252B; border: 1px solid rgba(217,164,65,0.32); overflow: hidden; display: flex; justify-content: center; align-items: flex-end;">
+        <svg viewBox="0 0 400 520" width="330" height="429" role="img" aria-label="Lucien, modern version: a bearded chef in a charcoal cap and jacket, tortoiseshell glasses low on his nose, peering over them with one eyebrow raised, a tasting spoon tucked behind his ear" style="display: block;">
+          <defs>
+            <radialGradient id="lbSkin" cx="42%" cy="36%" r="72%"><stop offset="0%" stop-color="#F3C9A2"></stop><stop offset="58%" stop-color="#D9A275"></stop><stop offset="100%" stop-color="#A86F48"></stop></radialGradient>
+            <linearGradient id="lbJacket" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#363A43"></stop><stop offset="100%" stop-color="#22252B"></stop></linearGradient>
+          </defs>
+          <g class="breathe">
+            <path d="M58 520 C66 440 126 402 200 402 C274 402 334 440 342 520 Z" fill="url(#lbJacket)"></path>
+            <path d="M150 520 L150 474 C150 466 156 460 164 460 L236 460 C244 460 250 466 250 474 L250 520 Z" fill="#7A5134"></path>
+            <path d="M150 474 L176 410" stroke="#5E3E27" stroke-width="7" fill="none" stroke-linecap="round"></path>
+            <path d="M250 474 L224 410" stroke="#5E3E27" stroke-width="7" fill="none" stroke-linecap="round"></path>
+            <circle cx="158" cy="470" r="3.5" fill="#D9A441"></circle>
+            <circle cx="242" cy="470" r="3.5" fill="#D9A441"></circle>
+            <path d="M176 336 L176 398 C188 408 212 408 224 398 L224 336 Z" fill="#B57A52"></path>
+            <path d="M158 394 C172 412 228 412 242 394 L248 412 C230 430 170 430 152 412 Z" fill="#2E3138"></path>
+            <path d="M154 410 C172 428 228 428 246 410" stroke="#D9A441" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <rect x="272" y="190" width="7" height="62" rx="3.5" fill="#C3C7CD" transform="rotate(22 276 222)"></rect>
+            <ellipse cx="262" cy="190" rx="8" ry="11" fill="#DADDE2" transform="rotate(22 262 190)"></ellipse>
+            <ellipse cx="114" cy="262" rx="14" ry="22" fill="#CF956B"></ellipse>
+            <ellipse cx="286" cy="262" rx="14" ry="22" fill="#C78C62"></ellipse>
+            <path d="M114 238 C114 182 150 152 200 152 C250 152 286 182 286 238 C286 300 262 348 200 360 C138 348 114 300 114 238 Z" fill="url(#lbSkin)"></path>
+            <path d="M115 214 C114 228 116 246 120 262 L128 262 C126 244 126 228 128 212 Z" fill="#3B2A20"></path>
+            <path d="M285 214 C286 228 284 246 280 262 L272 262 C274 244 274 228 272 212 Z" fill="#3B2A20"></path>
+            <path d="M116 250 C118 300 140 350 200 364 C260 350 282 300 284 250 C276 272 268 292 256 304 C244 318 222 322 200 322 C178 322 156 318 144 304 C132 292 124 272 116 250 Z" fill="#3B2A20"></path>
+            <path d="M140 300 C146 314 152 322 160 330" stroke="#5A4434" stroke-width="2" fill="none" stroke-linecap="round"></path>
+            <path d="M260 300 C254 314 248 322 240 330" stroke="#5A4434" stroke-width="2" fill="none" stroke-linecap="round"></path>
+            <ellipse cx="150" cy="286" rx="15" ry="8" fill="#E8907A" opacity="0.28"></ellipse>
+            <ellipse cx="250" cy="286" rx="15" ry="8" fill="#E8907A" opacity="0.28"></ellipse>
+            <path d="M146 214 C158 208 174 208 186 214" stroke="#2C1F17" stroke-width="7" fill="none" stroke-linecap="round"></path>
+            <g class="brow"><path d="M216 204 C228 188 246 188 258 200" stroke="#2C1F17" stroke-width="7" fill="none" stroke-linecap="round"></path></g>
+            <g class="blink">
+              <ellipse cx="167" cy="238" rx="14" ry="10" fill="#FFFDF8"></ellipse>
+              <circle cx="168" cy="235" r="7.5" fill="#4E6A5A"></circle>
+              <circle cx="168" cy="235" r="3.8" fill="#0F0C0A"></circle>
+              <circle cx="171" cy="232" r="2" fill="#FFFFFF"></circle>
+              <path d="M152 236 C158 228 176 227 182 234" stroke="#2C1F17" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            </g>
+            <g class="blink">
+              <ellipse cx="233" cy="236" rx="14" ry="12" fill="#FFFDF8"></ellipse>
+              <circle cx="232" cy="232" r="7.5" fill="#4E6A5A"></circle>
+              <circle cx="232" cy="232" r="3.8" fill="#0F0C0A"></circle>
+              <circle cx="235" cy="229" r="2" fill="#FFFFFF"></circle>
+              <path d="M218 232 C224 223 242 223 248 230" stroke="#2C1F17" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            </g>
+            <path d="M195 236 C199 258 212 276 214 290 C216 304 204 308 195 302 C190 299 192 294 198 295 C203 296 205 292 204 288 C200 272 193 256 195 236 Z" fill="#C4895F"></path>
+            <path d="M200 244 C203 258 208 270 210 280" stroke="#F7D3B4" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"></path>
+            <circle cx="168" cy="270" r="20" fill="#FFFFFF" fill-opacity="0.08" stroke="#6E3F1E" stroke-width="5"></circle>
+            <circle cx="168" cy="270" r="20" fill="none" stroke="#B9782F" stroke-width="5" stroke-dasharray="5 9"></circle>
+            <circle cx="232" cy="270" r="20" fill="#FFFFFF" fill-opacity="0.08" stroke="#6E3F1E" stroke-width="5"></circle>
+            <circle cx="232" cy="270" r="20" fill="none" stroke="#B9782F" stroke-width="5" stroke-dasharray="5 9"></circle>
+            <path d="M188 268 C194 262 206 262 212 268" stroke="#6E3F1E" stroke-width="4.5" fill="none" stroke-linecap="round"></path>
+            <path d="M148 266 L126 258" stroke="#6E3F1E" stroke-width="4" fill="none" stroke-linecap="round"></path>
+            <path d="M252 266 L274 258" stroke="#6E3F1E" stroke-width="4" fill="none" stroke-linecap="round"></path>
+            <path d="M166 314 C180 304 194 306 200 310 C206 306 220 304 234 314 C226 322 214 322 200 318 C186 322 174 322 166 314 Z" fill="#3B2A20"></path>
+            <path d="M184 332 C194 336 208 335 220 326" stroke="#9C4E3E" stroke-width="5" fill="none" stroke-linecap="round"></path>
+            <g class="sway">
+              <path d="M110 214 C108 160 148 120 200 120 C252 120 292 160 290 214 C262 200 232 194 200 194 C168 194 138 200 110 214 Z" fill="#2B2E35"></path>
+              <path d="M150 140 C170 128 196 124 220 128" stroke="#3E424B" stroke-width="4" fill="none" stroke-linecap="round"></path>
+              <path d="M112 206 C140 192 170 186 200 186 C230 186 260 192 288 206" stroke="#D9A441" stroke-width="3" fill="none" stroke-dasharray="7 6" stroke-linecap="round"></path>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 8px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+          <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 600;">Lucien</h2>
+          <span style="font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: {{accent}}; font-weight: 600;">The Chef-Owner</span>
+        </div>
+        <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.45; color: #E6DFD3;">“Three cloves of garlic? Bold. I respect it. Make it four.”</p>
+        <button type="button" style="align-self: flex-start; margin-top: 6px; border: 0; border-radius: 999px; padding: 14px 26px; min-height: 48px; background: {{accent}}; color: #1A1206; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; cursor: pointer;">Cook with Lucien</button>
+      </div>
+    </article>
+
+    <article style="display: flex; flex-direction: column; gap: 22px;">
+      <div style="height: 440px; border-radius: 270px 270px 28px 28px; background: radial-gradient(circle at 50% 48%, rgba(217,164,65,0.34) 0%, rgba(217,164,65,0) 58%), #23252B; border: 1px solid rgba(217,164,65,0.32); overflow: hidden; display: flex; justify-content: center; align-items: flex-end;">
+        <svg viewBox="0 0 400 520" width="330" height="429" role="img" aria-label="Margaux, modern version: a chef with voluminous curls tied up in an ochre headscarf, gold hoop earrings, a side-eye glance and a wide confident grin" style="display: block;">
+          <defs>
+            <radialGradient id="mbSkin" cx="42%" cy="36%" r="72%"><stop offset="0%" stop-color="#A86E48"></stop><stop offset="58%" stop-color="#7E4B2D"></stop><stop offset="100%" stop-color="#5A321C"></stop></radialGradient>
+            <linearGradient id="mbJacket" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#363A43"></stop><stop offset="100%" stop-color="#22252B"></stop></linearGradient>
+          </defs>
+          <g class="breathe">
+            <path d="M62 520 C70 442 128 404 200 404 C272 404 330 442 338 520 Z" fill="url(#mbJacket)"></path>
+            <path d="M150 520 L150 476 C150 468 156 462 164 462 L236 462 C244 462 250 468 250 476 L250 520 Z" fill="#7A5134"></path>
+            <path d="M150 476 L176 412" stroke="#5E3E27" stroke-width="7" fill="none" stroke-linecap="round"></path>
+            <path d="M250 476 L224 412" stroke="#5E3E27" stroke-width="7" fill="none" stroke-linecap="round"></path>
+            <circle cx="158" cy="472" r="3.5" fill="#D9A441"></circle>
+            <circle cx="242" cy="472" r="3.5" fill="#D9A441"></circle>
+            <path d="M86 252 C70 222 80 182 104 172 C100 138 130 112 160 118 C172 94 214 90 232 110 C262 100 296 120 296 152 C324 162 330 202 314 224 C330 250 318 288 296 296 C300 324 276 342 254 332 L146 332 C124 342 98 324 104 296 C82 288 74 268 86 252 Z" fill="#1A0F0A"></path>
+            <path d="M104 190 C112 182 122 182 128 190" stroke="#4A3020" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M290 186 C298 180 308 182 312 190" stroke="#4A3020" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M92 262 C98 254 108 254 112 262" stroke="#4A3020" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M290 268 C296 260 306 260 310 268" stroke="#4A3020" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M178 336 L178 400 C190 410 210 410 222 400 L222 336 Z" fill="#6A3D23"></path>
+            <path d="M158 396 C172 414 228 414 242 396 L248 414 C230 432 170 432 152 414 Z" fill="#2E3138"></path>
+            <path d="M154 412 C172 430 228 430 246 412" stroke="#D9A441" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M124 246 C124 190 158 166 200 166 C242 166 276 190 276 246 C276 304 250 350 200 358 C150 350 124 304 124 246 Z" fill="url(#mbSkin)"></path>
+            <circle cx="130" cy="214" r="13" fill="#1A0F0A"></circle>
+            <circle cx="270" cy="214" r="13" fill="#1A0F0A"></circle>
+            <circle cx="125" cy="240" r="10" fill="#1A0F0A"></circle>
+            <circle cx="275" cy="240" r="10" fill="#1A0F0A"></circle>
+            <path d="M114 178 C140 152 172 142 200 142 C228 142 262 152 288 178 L280 198 C256 180 228 172 200 172 C172 172 146 180 122 198 Z" fill="#D9A441"></path>
+            <circle cx="150" cy="168" r="3" fill="#7E1E2E"></circle>
+            <circle cx="176" cy="160" r="3" fill="#7E1E2E"></circle>
+            <circle cx="202" cy="157" r="3" fill="#7E1E2E"></circle>
+            <circle cx="228" cy="160" r="3" fill="#7E1E2E"></circle>
+            <circle cx="254" cy="168" r="3" fill="#7E1E2E"></circle>
+            <path d="M268 152 C290 122 318 132 306 158 C300 166 284 164 274 160 Z" fill="#C9922F"></path>
+            <path d="M276 158 C300 162 312 184 292 190 C284 190 278 178 272 168 Z" fill="#E2B04F"></path>
+            <circle cx="276" cy="160" r="7" fill="#B98326"></circle>
+            <circle cx="128" cy="304" r="13" fill="none" stroke="#E2B04F" stroke-width="3.5"></circle>
+            <circle cx="272" cy="304" r="13" fill="none" stroke="#E2B04F" stroke-width="3.5"></circle>
+            <ellipse cx="154" cy="288" rx="16" ry="8" fill="#D8705F" opacity="0.32"></ellipse>
+            <ellipse cx="246" cy="288" rx="16" ry="8" fill="#D8705F" opacity="0.32"></ellipse>
+            <g class="brow"><path d="M146 210 C158 196 176 196 188 206" stroke="#120A06" stroke-width="6" fill="none" stroke-linecap="round"></path></g>
+            <path d="M214 214 C226 208 242 208 254 214" stroke="#120A06" stroke-width="6" fill="none" stroke-linecap="round"></path>
+            <g class="blink later">
+              <ellipse cx="168" cy="242" rx="14" ry="11" fill="#FFFDF8"></ellipse>
+              <g class="glance"><circle cx="174" cy="244" r="8" fill="#2E1A10"></circle><circle cx="174" cy="244" r="4" fill="#0A0604"></circle><circle cx="177" cy="241" r="2.2" fill="#FFFFFF"></circle></g>
+              <path d="M152 244 C158 236 178 235 184 242 L184 230 L152 230 Z" fill="#8A532F"></path>
+              <path d="M152 243 C160 236 177 235 184 241 L190 236" stroke="#120A06" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <g class="blink later">
+              <ellipse cx="232" cy="242" rx="14" ry="11" fill="#FFFDF8"></ellipse>
+              <g class="glance"><circle cx="238" cy="244" r="8" fill="#2E1A10"></circle><circle cx="238" cy="244" r="4" fill="#0A0604"></circle><circle cx="241" cy="241" r="2.2" fill="#FFFFFF"></circle></g>
+              <path d="M216 244 C222 236 242 235 248 242 L248 230 L216 230 Z" fill="#8A532F"></path>
+              <path d="M216 243 C224 236 241 235 248 241 L254 236" stroke="#120A06" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <path d="M193 238 C195 258 200 272 208 282 C214 290 208 298 198 297 C190 298 182 294 184 287 C186 282 190 280 192 276 C195 262 192 250 193 238 Z" fill="#6E3F23"></path>
+            <path d="M184 290 C188 294 194 295 198 293" stroke="#4A2614" stroke-width="2" fill="none" stroke-linecap="round"></path>
+            <path d="M174 312 C188 320 214 322 230 306 C228 328 214 340 200 340 C186 340 176 328 174 312 Z" fill="#4A1612"></path>
+            <path d="M177 313 C190 320 212 321 228 308 C226 316 222 319 214 320 C200 322 188 320 179 317 Z" fill="#FFF8EE"></path>
+            <path d="M174 312 C188 320 214 322 230 306" stroke="#6E2A20" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M232 302 C236 306 236 312 233 316" stroke="#4A2614" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 8px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+          <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 600;">Margaux</h2>
+          <span style="font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: {{accent}}; font-weight: 600;">The Closer</span>
+        </div>
+        <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.45; color: #E6DFD3;">“Pan’s hot, timer’s set, and yes, I saw that. We will never speak of it.”</p>
+        <button type="button" style="align-self: flex-start; margin-top: 6px; border: 0; border-radius: 999px; padding: 14px 26px; min-height: 48px; background: {{accent}}; color: #1A1206; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; cursor: pointer;">Cook with Margaux</button>
+      </div>
+    </article>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D9A441","options":["#D9A441","#C8834A","#7FA38A"]},"$preview":{"width":1280,"height":940}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#D9A441' };
+  }
+}
+</script>
+</body>
+</html>

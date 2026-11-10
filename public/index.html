@@ -24,6 +24,7 @@
     --line: rgba(200,131,74,0.35);
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html, body { margin: 0; min-height: 100%; }
   body {
     background: var(--bg);
@@ -49,7 +50,8 @@
   .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .card { display: flex; flex-direction: column; gap: 12px; background: none; border: 0; padding: 0; color: inherit; text-align: left; font: inherit; cursor: pointer; }
   .arch { position: relative; border-radius: 999px 999px 24px 24px; background: radial-gradient(circle at 50% 50%, rgba(232,160,98,0.42) 0%, rgba(232,160,98,0) 60%), var(--panel); border: 1px solid var(--line); overflow: hidden; display: flex; justify-content: center; align-items: flex-end; aspect-ratio: 5 / 6; }
-  .arch svg { width: 88%; height: auto; display: block; }
+  .arch svg { width: 88%; height: auto; max-height: 100%; display: block; }
+  @media (min-width: 700px) { .cards .arch { aspect-ratio: auto; height: min(48vh, 420px); } }
   .card:hover .arch, .card:focus-visible .arch { border-color: var(--copper); }
   .card:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; border-radius: 24px; }
   .who { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
@@ -62,7 +64,43 @@
   #kitchen { display: none; flex-direction: column; gap: 16px; flex: 1; }
   body.cooking-view #kitchen { display: flex; }
   body.cooking-view #picker { display: none; }
-  .stage { width: min(84vw, 360px); align-self: center; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .chef-row { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .stage { width: min(84vw, 360px); align-self: center; transition: width .3s ease; }
+  body.has-recipe .chef-row { flex-direction: row; justify-content: flex-start; }
+  body.has-recipe .stage { width: 84px; align-self: auto; }
+  body.has-recipe .stage .arch { border-radius: 999px 999px 14px 14px; }
+  body.has-recipe .chef-line { flex-direction: column; align-items: flex-start; gap: 2px; }
+  body.has-recipe #say { font-size: clamp(17px, 4.4vw, 20px); }
+  body.has-recipe .say { min-height: 0; padding: 14px 18px; }
+  .recipe { background: #191C2A; border: 1px solid var(--line); border-radius: 24px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .dish { font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: clamp(26px, 7vw, 36px); line-height: 1.1; margin: 2px 0 0; }
+  .source { margin: 0; font-size: 13px; color: var(--muted); }
+  .source:empty { display: none; }
+  .prep { margin-top: 10px; padding-top: 12px; border-top: 1px solid rgba(200,131,74,.2); }
+  .prep ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .prep-item { width: 100%; display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px 12px; border-radius: 12px; border: 1px solid #8A6446; background: transparent; color: var(--ink); font: 500 16px/1.35 "Inter", sans-serif; text-align: left; cursor: pointer; }
+  .prep-item::before { content: ""; flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--copper); }
+  .prep-item[aria-pressed="true"] { color: var(--muted); text-decoration: line-through; }
+  .prep-item[aria-pressed="true"]::before { background: var(--copper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' stroke='%231A1206' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+  .step { margin-top: 12px; padding-top: 14px; border-top: 1px solid rgba(200,131,74,.2); }
+  .step-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .step-head .eyebrow { color: var(--copper); font-weight: 600; }
+  .steps-left { font-size: 13px; color: var(--muted); }
+  .bar { height: 6px; border-radius: 999px; background: #2A2F44; margin: 10px 0 12px; overflow: hidden; }
+  .bar span { display: block; height: 100%; width: 0; background: var(--copper); border-radius: 999px; transition: width .4s ease; }
+  #step-text { font-family: "Playfair Display", Georgia, serif; font-size: clamp(26px, 7.4vw, 38px); line-height: 1.25; margin: 0; }
+  .tips { display: none; }
+  body.in-call .tips { display: flex; }
+  .tips button { font: 500 14px "Inter", sans-serif; color: var(--ink); background: transparent; padding: 8px 14px; min-height: 44px; border-radius: 999px; border: 1px solid #8A6446; cursor: pointer; }
+  .tips button:hover, .tips button:focus-visible { border-color: var(--copper); color: var(--copper); }
+  #switch { align-self: center; }
+  .dock { position: sticky; bottom: 0; margin: auto -16px 0; padding: 12px 16px max(14px, env(safe-area-inset-bottom)); background: linear-gradient(to bottom, rgba(18,20,29,0), var(--bg) 18px); display: flex; flex-direction: column; gap: 12px; z-index: 5; }
+  .dock-row { display: flex; gap: 10px; align-items: stretch; max-width: 620px; width: 100%; margin: 0 auto; }
+  .dock .typed { max-width: 620px; width: 100%; margin: 0 auto; background: var(--bg); }
+  .type-toggle { flex-shrink: 0; border: 1px solid #8A6446; background: var(--bg); color: var(--ink); border-radius: 999px; padding: 0 18px; min-height: 56px; font: 600 15px "Inter", sans-serif; cursor: pointer; }
+  .type-toggle[aria-expanded="true"] { border-color: var(--copper); color: var(--copper); }
+  #go:focus-visible, .type-toggle:focus-visible, .send:focus-visible, .link:focus-visible { outline: 3px solid #F4ECDF; outline-offset: 3px; }
   .stage .arch { aspect-ratio: 5 / 6; }
   body.listening .stage .arch { box-shadow: 0 0 0 3px rgba(159,211,176,.35); }
   body.talking .stage .arch { box-shadow: 0 0 0 3px rgba(200,131,74,.5); }
@@ -71,17 +109,15 @@
   #say { font-family: "Playfair Display", Georgia, serif; font-size: clamp(21px, 5.6vw, 28px); line-height: 1.35; margin: 6px 0 0; }
   #heard { margin: 10px 0 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
   .typed { display: flex; flex-direction: column; gap: 8px; }
-  .typed textarea { width: 100%; resize: vertical; min-height: 84px; background: #191C2A; color: var(--ink); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; font: 16px/1.45 "Inter", sans-serif; }
+  .typed textarea { width: 100%; resize: vertical; min-height: 84px; background: #191C2A; color: var(--ink); border: 1px solid #8A6446; border-radius: 16px; padding: 12px 14px; font: 16px/1.45 "Inter", sans-serif; }
   .typed textarea:focus { outline: 2px solid var(--copper); outline-offset: 1px; }
   .typed textarea::placeholder { color: #8F8677; }
   .typed-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   .typed-row .hint { text-align: left; }
   .send { flex-shrink: 0; border: 1px solid var(--copper); background: transparent; color: var(--copper); border-radius: 999px; padding: 10px 22px; min-height: 44px; font: 600 15px "Inter", sans-serif; cursor: pointer; }
   .send:hover { background: rgba(200,131,74,.12); }
-  .tips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .tips span { font-size: 13px; color: var(--ink); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); }
-  .controls { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: auto; }
-  #go { width: 100%; max-width: 520px; border: 0; border-radius: 999px; padding: 19px 24px; font-family: "Inter", sans-serif; font-weight: 600; font-size: 19px; background: var(--copper); color: #1A1206; cursor: pointer; box-shadow: 0 5px 0 var(--copper-dark); transition: transform .08s ease, box-shadow .08s ease; }
+  .tips { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  #go { flex: 1; min-height: 56px; border: 0; border-radius: 999px; padding: 19px 24px; font-family: "Inter", sans-serif; font-weight: 600; font-size: 19px; background: var(--copper); color: #1A1206; cursor: pointer; box-shadow: 0 5px 0 var(--copper-dark); transition: transform .08s ease, box-shadow .08s ease; }
   #go:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--copper-dark); }
   #go.end { background: var(--ink); box-shadow: 0 5px 0 #8C8273; }
   #go:disabled { opacity: .6; }
@@ -112,7 +148,7 @@
 <div class="wrap">
   <header>
     <div class="brand">Chef<b>fy</b></div>
-    <div class="status" id="status">Ready</div>
+    <div class="status" id="status">Not started</div>
   </header>
 
   <section id="picker" aria-labelledby="pick-title">
@@ -137,26 +173,51 @@
     <p class="hint">Works with Bluetooth speakers and earbuds. Your screen stays on while you cook.</p>
   </section>
 
-  <section id="kitchen" aria-live="polite">
-    <div class="stage"><div class="arch" id="stage-slot"></div></div>
-    <div class="chef-line"><span class="name" id="chef-name">Lucien</span><span class="role" id="chef-role">The Maître</span></div>
+  <section id="kitchen" aria-labelledby="kitchen-title">
+    <h2 class="sr-only" id="kitchen-title">Cooking with your sous chef</h2>
+    <div class="chef-row">
+      <div class="stage"><div class="arch" id="stage-slot"></div></div>
+      <div class="chef-line"><span class="name" id="chef-name">Lucien</span><span class="role" id="chef-role">The Maître</span></div>
+    </div>
+    <section class="recipe" id="recipe" aria-label="Recipe" hidden>
+      <p class="eyebrow">Today we’re making</p>
+      <h3 class="dish" id="dish">Your dish</h3>
+      <p class="source" id="source"></p>
+      <div class="prep" id="prep-wrap" hidden>
+        <p class="eyebrow">Before we start</p>
+        <ul id="prep"></ul>
+      </div>
+      <div class="step" aria-live="polite">
+        <div class="step-head"><span class="eyebrow" id="step-count">Ready when you are</span><span class="steps-left" id="steps-left"></span></div>
+        <div class="bar" aria-hidden="true"><span id="bar-fill"></span></div>
+        <p id="step-text">Say “Ready, Chef” when you’re set.</p>
+      </div>
+    </section>
     <div class="say">
       <p class="eyebrow" id="say-label">Lucien says</p>
-      <p id="say">Tap “Start cooking” and tell me what we’re making, or what’s in your fridge.</p>
+      <p id="say" aria-live="polite">Tap “Start cooking” and tell me what we’re making, or what’s in your fridge.</p>
       <p id="heard"></p>
     </div>
-    <form class="typed" id="typed-form">
-      <label class="eyebrow" for="typed">Type or paste a recipe</label>
-      <textarea id="typed" rows="3" placeholder="Paste a recipe, or type a dish or question…"></textarea>
-      <div class="typed-row">
-        <span class="hint">Your chef reads it, then tells you what to do first.</span>
-        <button type="submit" class="send">Send</button>
+    <div class="tips" id="tips" aria-label="Quick replies">
+      <button type="button" data-say="Ready, Chef">“Ready, Chef”</button>
+      <button type="button" data-say="Next">“Next”</button>
+      <button type="button" data-say="Repeat that">“Repeat”</button>
+      <button type="button" data-say="What are the ingredients?">“Ingredients”</button>
+    </div>
+    <button class="link" id="switch" type="button">Switch chef</button>
+    <div class="dock">
+      <form class="typed" id="typed-form" hidden>
+        <label class="eyebrow" for="typed">Type or paste a recipe</label>
+        <textarea id="typed" rows="3" placeholder="Paste a recipe, or type a dish or question…"></textarea>
+        <div class="typed-row">
+          <span class="hint">Your chef reads it, then tells you what to do first.</span>
+          <button type="submit" class="send">Send</button>
+        </div>
+      </form>
+      <div class="dock-row">
+        <button type="button" class="type-toggle" id="type-toggle" aria-expanded="false" aria-controls="typed-form">Type instead</button>
+        <button id="go" type="button">Start cooking</button>
       </div>
-    </form>
-    <div class="tips"><span>“Ready, Chef”</span><span>“next”</span><span>“I’m done chopping”</span><span>“I’m out of…”</span></div>
-    <div class="controls">
-      <button id="go" type="button">Start cooking</button>
-      <button class="link" id="switch" type="button">Switch chef</button>
     </div>
   </section>
 </div>
@@ -378,6 +439,76 @@
   }
   function mouth() { return stageSlot.querySelector(".mouth"); }
 
+  // Cooking mode: the chef drives these through the show_recipe / show_step
+  // client-side tools; a transcript fallback catches "Today we are making X".
+  const recipeEl = document.getElementById("recipe");
+  const dishEl = document.getElementById("dish");
+  const sourceEl = document.getElementById("source");
+  const prepWrap = document.getElementById("prep-wrap");
+  const prepList = document.getElementById("prep");
+  const stepCount = document.getElementById("step-count");
+  const stepsLeft = document.getElementById("steps-left");
+  const barFill = document.getElementById("bar-fill");
+  const stepText = document.getElementById("step-text");
+  let totalSteps = 0;
+
+  function resetRecipe() {
+    totalSteps = 0;
+    recipeEl.hidden = true;
+    body.classList.remove("has-recipe");
+    dishEl.textContent = "Your dish";
+    sourceEl.textContent = "";
+    prepList.replaceChildren();
+    prepWrap.hidden = true;
+    stepCount.textContent = "Ready when you are";
+    stepsLeft.textContent = "";
+    barFill.style.width = "0";
+    stepText.textContent = "Say “Ready, Chef” when you’re set.";
+  }
+
+  function showRecipe({ dish, source, prep, total_steps } = {}) {
+    if (dish) dishEl.textContent = dish;
+    sourceEl.textContent = source ? `from ${source}` : "";
+    const items = Array.isArray(prep) ? prep.filter(Boolean) : [];
+    prepList.replaceChildren(...items.map((item) => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "prep-item";
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = item;
+      btn.addEventListener("click", () => btn.setAttribute("aria-pressed", btn.getAttribute("aria-pressed") === "true" ? "false" : "true"));
+      li.appendChild(btn);
+      return li;
+    }));
+    prepWrap.hidden = items.length === 0;
+    totalSteps = Number(total_steps) || totalSteps;
+    stepsLeft.textContent = totalSteps ? `${totalSteps} steps` : "";
+    recipeEl.hidden = false;
+    body.classList.add("has-recipe");
+  }
+
+  function showStep({ step, total, text } = {}) {
+    const n = Number(step) || 0;
+    totalSteps = Number(total) || totalSteps;
+    if (recipeEl.hidden) { recipeEl.hidden = false; body.classList.add("has-recipe"); }
+    prepWrap.hidden = true;
+    stepCount.textContent = totalSteps ? `Step ${n} of ${totalSteps}` : `Step ${n}`;
+    stepsLeft.textContent = totalSteps && n < totalSteps ? `${totalSteps - n} to go` : "Last step";
+    barFill.style.width = totalSteps ? `${Math.min(100, (n / totalSteps) * 100)}%` : "0";
+    if (text) stepText.textContent = text;
+  }
+
+  // ?preview lets you drive cooking mode without a call (testing, demo shots).
+  if (new URLSearchParams(location.search).has("preview")) {
+    window.cheffyPreview = { showRecipe, showStep, resetRecipe };
+  }
+
+  function parseArgs(args) {
+    if (typeof args !== "string") return args ?? {};
+    try { return JSON.parse(args); } catch { return {}; }
+  }
+
   async function keepAwake() {
     try { wakeLock = await navigator.wakeLock?.request("screen"); } catch {}
   }
@@ -393,6 +524,7 @@
 
     vapi.on("call-start", () => {
       inCall = true;
+      body.classList.add("in-call");
       goBtn.textContent = "End";
       goBtn.classList.add("end");
       goBtn.disabled = false;
@@ -406,11 +538,12 @@
     });
     vapi.on("call-end", () => {
       inCall = false;
+      body.classList.remove("in-call");
       goBtn.textContent = "Start cooking";
       goBtn.classList.remove("end");
       goBtn.disabled = false;
       document.getElementById("switch").hidden = false;
-      setState(null, "Ready");
+      setState(null, "Not started");
       wakeLock?.release?.().catch(() => {});
       wakeLock = null;
     });
@@ -422,10 +555,23 @@
     });
     vapi.on("message", (msg) => {
       if (msg.type === "transcript" && msg.transcriptType === "final") {
-        if (msg.role === "assistant") sayEl.textContent = msg.transcript;
-        else heardEl.textContent = `You: ${msg.transcript}`;
+        if (msg.role === "assistant") {
+          sayEl.textContent = msg.transcript;
+          const made = msg.transcript.match(/today we(?:'re| are) making\s+([^.!?]+)/i);
+          if (made && recipeEl.hidden) showRecipe({ dish: made[1].trim() });
+        } else {
+          heardEl.textContent = `You: ${msg.transcript}`;
+        }
       }
-      if (msg.type === "tool-calls") setState("thinking", "Searching recipes");
+      if (msg.type === "tool-calls") {
+        for (const call of msg.toolCallList ?? []) {
+          const name = call?.function?.name;
+          const args = parseArgs(call?.function?.arguments);
+          if (name === "show_recipe") showRecipe(args);
+          else if (name === "show_step") showStep(args);
+          else setState("thinking", "Searching recipes");
+        }
+      }
     });
     vapi.on("error", (err) => {
       console.error(err);
@@ -443,6 +589,7 @@
 
   async function startCall() {
     try {
+      resetRecipe();
       goBtn.disabled = true;
       setState("thinking", "Connecting");
       if (!vapi) await loadConfig();
@@ -454,7 +601,7 @@
       });
     } catch (err) {
       console.error(err);
-      setState(null, "Ready");
+      setState(null, "Not started");
       sayEl.textContent = err.message || "Couldn't start. Check your mic permission and try again.";
       goBtn.disabled = false;
     }
@@ -471,6 +618,7 @@
     const text = typedBox.value.trim();
     if (!text) return;
     typedBox.value = "";
+    setTyping(false);
     heardEl.textContent = `You (typed): ${text.length > 90 ? text.slice(0, 90) + "…" : text}`;
     if (inCall) {
       sendTyped(text);
@@ -480,6 +628,23 @@
       startCall();
     }
   });
+  const typedForm = document.getElementById("typed-form");
+  const typeToggle = document.getElementById("type-toggle");
+  function setTyping(open) {
+    typedForm.hidden = !open;
+    typeToggle.setAttribute("aria-expanded", String(open));
+    typeToggle.textContent = open ? "Close" : "Type instead";
+    if (open) typedBox.focus();
+  }
+  typeToggle.addEventListener("click", () => setTyping(typedForm.hidden));
+
+  // Quick-reply chips say the phrase for you (handy in a loud kitchen).
+  document.querySelectorAll("#tips [data-say]").forEach((chip) => chip.addEventListener("click", () => {
+    if (!inCall) return;
+    vapi.send({ type: "add-message", message: { role: "user", content: chip.dataset.say } });
+    heardEl.textContent = `You (tapped): ${chip.dataset.say}`;
+  }));
+
   typedBox.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) document.getElementById("typed-form").requestSubmit();
   });

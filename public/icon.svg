@@ -1,12 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#E8552D"/>
-  <g transform="translate(56 40) scale(1.0)">
-    <path d="M110 170 C70 170 60 110 105 100 C110 55 170 45 200 80 C230 45 290 55 295 100 C340 110 330 170 290 170 Z" fill="#fff"/>
-    <rect x="115" y="160" width="170" height="40" rx="10" fill="#fff"/>
-    <circle cx="200" cy="290" r="110" fill="#FFD9B8"/>
-    <circle cx="160" cy="275" r="11" fill="#3A2418"/>
-    <circle cx="240" cy="275" r="11" fill="#3A2418"/>
-    <path d="M200 318 C175 300 140 305 128 330 C150 322 170 330 200 330 C230 330 250 322 272 330 C260 305 225 300 200 318 Z" fill="#5A3624"/>
-    <ellipse cx="200" cy="352" rx="22" ry="12" fill="#B23A2A"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="55%" r="60%"><stop offset="0%" stop-color="#E8A062" stop-opacity="0.45"/><stop offset="100%" stop-color="#E8A062" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#E2DACD"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#12141D"/>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+  <g transform="rotate(-6 256 250)">
+    <path d="M146 268 C96 230 104 146 176 140 C186 84 256 62 292 108 C334 70 412 98 404 166 C450 190 438 258 380 268 Z" fill="url(#cloth)"/>
+    <path d="M206 150 C200 190 200 230 206 268" stroke="#DCD3C5" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M266 122 C262 180 262 228 266 268" stroke="#DCD3C5" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M326 136 C330 186 330 230 324 268" stroke="#DCD3C5" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <rect x="146" y="254" width="236" height="62" rx="14" fill="#FBF8F2"/>
+    <rect x="146" y="254" width="236" height="12" rx="6" fill="#DDD5C7"/>
   </g>
+  <path d="M256 384 C238 370 210 370 188 382 C172 390 160 382 160 366 C156 390 172 406 192 398 C214 388 238 388 256 396 C274 388 298 388 320 398 C340 406 356 390 352 366 C352 382 340 390 324 382 C302 370 274 370 256 384 Z" fill="#C8834A"/>
 </svg>

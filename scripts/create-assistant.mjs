@@ -34,6 +34,11 @@ How a session goes:
 8. After the last step, say it's done, with one plating or serving tip, and a little flourish.
 9. A typed message mid-cook is just the cook talking to you; respond to it the same way.
 
+The cook's screen (never mention these tools or the screen):
+- Right after you've read the recipe, and before you say "Today we are making", call show_recipe with the dish name, the source if any, the "before we start" items as short phrases, and the total number of method steps.
+- Every time you give a method step, first call show_step with the step number, the total, and a short version of that step (under 15 words). Do this for repeats and "go back" too.
+- After the last step, call show_step with step equal to total and text "Done. Plate it up."
+
 Rules:
 - Say amounts and times clearly: "two tablespoons", "about five minutes". Remind them to set a timer for anything over two minutes.
 - Food safety: chicken and poultry 165°F, ground meat 160°F, pork and fish 145°F.
@@ -90,8 +95,46 @@ const assistant = {
         messages: [{ type: "request-start", content: "One sec, checking swaps." }],
         server,
       },
+      // Client-side tools: no server, so Vapi sends them to the browser, which
+      // updates the cooking screen. async: the chef keeps talking, no waiting.
+      {
+        type: "function",
+        async: true,
+        function: {
+          name: "show_recipe",
+          description: "Show the recipe header on the cook's screen. Call once, right after reading the recipe and before saying 'Today we are making'.",
+          parameters: {
+            type: "object",
+            properties: {
+              dish: { type: "string", description: "Dish name, e.g. 'Easy Shakshuka'." },
+              source: { type: "string", description: "Website the recipe came from, if any." },
+              prep: { type: "array", items: { type: "string" }, description: "Before-we-start items as short phrases, e.g. 'Preheat oven to 400°F'. Empty if none." },
+              total_steps: { type: "integer", description: "Number of method steps." },
+            },
+            required: ["dish", "total_steps"],
+          },
+        },
+      },
+      {
+        type: "function",
+        async: true,
+        function: {
+          name: "show_step",
+          description: "Show the current method step on the cook's screen. Call right before saying each step.",
+          parameters: {
+            type: "object",
+            properties: {
+              step: { type: "integer", description: "Step number, starting at 1." },
+              total: { type: "integer", description: "Total number of steps." },
+              text: { type: "string", description: "The step, shortened to under 15 words." },
+            },
+            required: ["step", "total", "text"],
+          },
+        },
+      },
     ],
   },
+  clientMessages: ["conversation-update", "function-call", "hang", "model-output", "speech-update", "status-update", "transcript", "tool-calls", "user-interrupted", "voice-input"],
   voice: { provider: "deepgram", voiceId: "helios" },
   transcriber: { provider: "deepgram", model: "nova-3", language: "en" },
   maxDurationSeconds: 3600,
