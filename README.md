@@ -1,6 +1,6 @@
 # Cheffy — your hands-free voice sous chef
 
-**Live:** https://cheffy-ten.vercel.app · **Demo:** [`demo/cheffy-walkthrough.mp4`](demo/cheffy-walkthrough.mp4) · **PRD:** [`PRD.md`](PRD.md)
+**Live:** https://cheffy-ten.vercel.app · **Demo:** [`demo/cheffy-walkthrough.mp4`](demo/cheffy-walkthrough.mp4) · **Intro:** [`demo/cheffy-intro.mp4`](demo/cheffy-intro.mp4) · **PRD:** [`PRD.md`](PRD.md)
 
 Built in one evening at Build Club × Vapi's *Side Quest Hotline* hackathon (San Francisco, Nov 9, 2026).
 
