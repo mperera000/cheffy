@@ -1,0 +1,9 @@
+{
+  "name": "Cheffy – your voice sous chef",
+  "short_name": "Cheffy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF6EA",
+  "theme_color": "#E8552D",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

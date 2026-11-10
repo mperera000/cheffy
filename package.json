@@ -1,0 +1,10 @@
+{
+  "name": "cheffy",
+  "version": "1.0.0",
+  "description": "Cheffy: a hands-free voice AI sous chef (Vapi + Exa + TypeSafe Jev + Deepgram)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
